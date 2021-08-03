@@ -1,16 +1,34 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const { MONGO_IP, MONGO_PORT, MONGO_USERNAME, MONGO_PASSWORD } = require("./config/config");
-const app = express();
+const express = require("express");
+const mongoose = require("mongoose");
+const loginRouter = require("./app/routes/login-routes");
+const bookingRouter = require("./app/routes/booking-routes");
+const searchRouter = require("./app/routes/search-routes");
 
 const port = process.env.PORT || 3000;
 
+// Set up Database
+const {
+  MONGO_IP,
+  MONGO_PORT,
+  MONGO_USERNAME,
+  MONGO_PASSWORD,
+} = require("./config/config");
 const mongoDbUrl = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}`;
+mongoose
+  .connect(mongoDbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("Database Connected"))
+  .catch((err) => console.error(err));
+mongoose.set("useFindAndModify", false);
+const db = mongoose.connection;
+db.on("error", (error) => console.error(error));
+db.once("open", () => console.log("Connected to database!"));
 
-
-
-app.get('/', (req, res) => {
-  res.json({message: 'Hello World!'});
-});
+// Set up Express app
+const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use("/login", loginRouter);
+app.use("/booking", bookingRouter);
+app.use("/search", searchRouter);
 
 app.listen(port, () => console.log(`Express is listening on port ${port}!`));
