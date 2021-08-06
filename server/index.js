@@ -1,8 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const loginRouter = require("./app/routes/login-routes");
-const bookingRouter = require("./app/routes/booking-routes");
-const searchRouter = require("./app/routes/search-routes");
+const searchRouter = require("./app/routes/search");
+const loginRouter = require("./app/routes/login");
+const bookingRouter = require("./app/routes/booking");
 
 const port = process.env.PORT || 3000;
 
@@ -27,8 +27,8 @@ db.once("open", () => console.log("Connected to database!"));
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use("/search", searchRouter);
 app.use("/login", loginRouter);
 app.use("/booking", bookingRouter);
-app.use("/search", searchRouter);
 
 app.listen(port, () => console.log(`Express is listening on port ${port}!`));
