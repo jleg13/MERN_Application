@@ -8,5 +8,6 @@ router.get('/', searchController.read_restaurantlist_list);
 router.get('/:keyword', searchValidator.validateSearch, searchController.read_restaurantlist_items);
 // Search restaurants by keyword, Date, Time, Guests Number
 router.get('/:keyword/:date/:time/:guests', searchValidator.validateSearch, searchController.read_restaurantlist_items);
+router.post("/", searchController.createRestaurant)
 
 module.exports = router;

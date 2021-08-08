@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const searchRouter = require("./app/routes/search");
 const loginRouter = require("./app/routes/login");
 const bookingRouter = require("./app/routes/booking");
+const restaurantsRouter = require("./app/routes/restaurants");
 
 const port = process.env.PORT || 3000;
 
@@ -30,5 +31,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/search", searchRouter);
 app.use("/login", loginRouter);
 app.use("/booking", bookingRouter);
+app.use("/restaurants", restaurantsRouter);
 
 app.listen(port, () => console.log(`Express is listening on port ${port}!`));

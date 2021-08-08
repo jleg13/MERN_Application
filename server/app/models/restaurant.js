@@ -17,10 +17,10 @@ const RestaurantSchema = new Schema({
     type: String,
     require: true,
   },
-  // image: {
-  //   binData: 'Buffer',
-  //   require: true,
-  // },
+  image: {
+    type: String,
+    require: true,
+  },
   schedule: {
     type: [
       {
