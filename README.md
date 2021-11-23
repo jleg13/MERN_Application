@@ -4,6 +4,8 @@ Name: Joshua Le Gresley
 
 Email: joshlegresley@hotmail.com
 
+This project is from the Advanced Web Development unit at UNE. The complete full-stack process was taught and here the backend was built using node.js and mongodb. The client-side in this example was a React front-end, but I later decided to integrate this backend with a Vue.js front-end found in this [repository](https://github.com/jleg13/MEVN_Application). Part of this project was to become familiar with testing and documenting our code. Here I have used Swagger to create the API-docs and used jest to test the code.
+
 # How to run the app
 - Install [Docker](https://www.docker.com/products/docker-desktop) and [Docker Compose](https://docs.docker.com/compose/install/) on your machine.
 - In the terminal, run the command `docker-compose up -d` or `docker compose up -d` in the `dropbeartable` directory.
