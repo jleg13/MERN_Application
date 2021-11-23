@@ -1,39 +1,103 @@
-// const { validationResult } = require("express-validator");
-// const Restaurant = require("../models/Restaurant");
 const Restaurant = require("../models/Restaurant");
 
-exports.read_restaurantlist_list = async (req, res) => {
-  Restaurant.find()
-    .then((restuarants) => {
-      res.status(200).json({
-        confirmation: "success",
-        data: restuarants,
-      });
-    })
-    .catch((err) => {
-      res.status(400).json({
-        confirmation: "fail",
-        message: err.message,
-      });
-    });
-};
-
-exports.read_restaurantlist_items = (req, res) => {
-  res.status(200).json({ message: "Hello World!" });
-};
-
-exports.createRestaurant = async (req, res) => {
-  let restaurant = new Restaurant({
-    id: req.body.id,
-    name: req.body.name,
-    cuisine: req.body.cuisine,
-    info: req.body.info,
-    image: req.body.image
-  });
-  let output_restaurant = await restaurant.save();
-  if (output_restaurant) {
-    return res.status(201).json(output_restaurant);
+exports.readRestaurantsByKeyword = async (req, res) => {
+  let errors = validationResult(req);
+  // error on search content
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
   }
-  // In case, something went wrong
-  res.status(400).json({ errors: [err] });
+  let keywordSearch = await Restaurant.find({
+    cuisine: req.params.keyword,
+  }).exec();
+  // Check keyword for matches
+  if (!keywordSearch) {
+    return res.status(401).json({
+      errors: {
+        value: req.params.keyword,
+        confirmation: "fail",
+        msg: "the keyword search failed",
+        param: "keyword",
+        location: "params",
+      },
+    });
+  } else if (keywordSearch.length === 0) {
+    return res.status(204).json({
+      data: keywordSearch,
+      confirmation: "success",
+      msg: "the keyword found no matches",
+    });
+  } else {
+    return res.status(200).json({
+      userId: req.params.keyword,
+      data: keywordSearch,
+      confirmation: "success",
+      msg: "found matching search results",
+    });
+  }
+};
+
+exports.readRestaurantsBySearch = async (req, res) => {
+  let errors = validationResult(req);
+  // error on search content
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+  if (req.query.keyword) {
+    let search = await Restaurant.find({
+      cuisine: req.query.keyword,
+    }).exec();
+    // Check for matches
+    if (!search) {
+      return res.status(401).json({
+        errors: {
+          value: req.query.keyword,
+          confirmation: "fail",
+          msg: "the keyword search failed",
+          param: "keyword",
+          location: "query",
+        },
+      });
+    } else if (search.length === 0) {
+      return res.status(204).json({
+        data: search,
+        confirmation: "success",
+        msg: "the keyword found no matches",
+      });
+    } else {
+      return res.status(200).json({
+        data: search,
+        date: req.params.date,
+        time: req.params.time,
+        guests: req.params.guests,
+        confirmation: "success",
+        msg: "successfully retrieved restaurants",
+      });
+    }
+  } else {
+    let restaurants = await Restaurant.find().exec();
+    // Check query
+    if (!restaurants) {
+      return res.status(401).json({
+        errors: {
+          confirmation: "fail",
+          msg: "there was a problem getting restaurants",
+        },
+      });
+    } else if (restaurants.length === 0) {
+      return res.status(204).json({
+        data: restaurants,
+        confirmation: "success",
+        msg: "no registered restaurants",
+      });
+    } else {
+      return res.status(200).json({
+        data: restaurants,
+        date: req.params.date,
+        time: req.params.time,
+        guests: req.params.guests,
+        confirmation: "success",
+        msg: "successfully retrieved restaurants",
+      });
+    }
+  }
 };
