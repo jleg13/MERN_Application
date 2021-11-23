@@ -2,9 +2,7 @@
 
 Name: Joshua Le Gresley
 
-Email: jlegresl@myune.edu.au
-
-Student ID: 220197638
+Email: joshlegresley@hotmail.com
 
 # How to run the app
 - Install [Docker](https://www.docker.com/products/docker-desktop) and [Docker Compose](https://docs.docker.com/compose/install/) on your machine.
