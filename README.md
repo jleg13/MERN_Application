@@ -1,10 +1,18 @@
-###  COSC360 Assesment 2: Server
+# Restaurant Booking Application (Server-side)
 
-Name: Joshua Le Gresley
+## Project Description
 
-Email: joshlegresley@hotmail.com
+This project is from the Advanced Web Development unit at UNE. The complete full-stack process was taught and here the backend was built using node.js and
+mongodb. The client-side in this example was a React front-end, but I later decided to integrate this backend with a Vue.js front-end found in this
+[repository](https://github.com/jleg13/MEVN_Application). Part of this project was to become familiar with testing and documenting our code. Here I have
+used Swagger to create the API-docs and used jest to test the code.
 
-This project is from the Advanced Web Development unit at UNE. The complete full-stack process was taught and here the backend was built using node.js and mongodb. The client-side in this example was a React front-end, but I later decided to integrate this backend with a Vue.js front-end found in this [repository](https://github.com/jleg13/MEVN_Application). Part of this project was to become familiar with testing and documenting our code. Here I have used Swagger to create the API-docs and used jest to test the code.
+## Built With
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+
 
 # How to run the app
 - Install [Docker](https://www.docker.com/products/docker-desktop) and [Docker Compose](https://docs.docker.com/compose/install/) on your machine.
@@ -16,7 +24,8 @@ This project is from the Advanced Web Development unit at UNE. The complete full
 
 # How to shut down the app
 
-Important: the command will remove all unused volumes, including the named volume `dropbeartable_mongodb`, which contains all of your data. You should follow the steps to back up your data beforehand.
+Important: the command will remove all unused volumes, including the named volume `dropbeartable_mongodb`, which contains all of your data. You should
+follow the steps to back up your data beforehand.
 
 - To back up the data:
 	- visit [http://localhost:8081](http://localhost:8081)
@@ -129,7 +138,8 @@ curl --request POST \
     "closeTime": "23:00",
     "seatingInterval": 30,
     "tableCapacityPerInterval": 4,
-    "info": "Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, et interdum justo suscipit id. Etiam dictum feugiat tellus, a semper massa.",
+    "info": "Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, et
+    interdum justo suscipit id. Etiam dictum feugiat tellus, a semper massa.",
     "image": "https://dropbeartable.s3.ap-southeast-2.amazonaws.com/italian.jpg"
   }'
 ```
@@ -159,3 +169,13 @@ To view the API Docs:
 http://localhost:9000/docs
 ```
 
+
+## Authors
+
+**Joshua Le Gresley** - *Initial work* - [jleg13](https://https://github.com/jleg13).
+
+## Support:
+Please email joshualegresley@gmail.com if further details are required.
+
+## Contributing:
+For major changes, please open an issue first to discuss what you would like to change.
