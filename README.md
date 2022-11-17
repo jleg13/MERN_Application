@@ -1,20 +1,20 @@
 # Restaurant Booking Application (Server-side)
 
-## Project Description
+## Project Description:
 
 This project is from the Advanced Web Development unit at UNE. The complete full-stack process was taught and here the backend was built using node.js and
 mongodb. The client-side in this example was a React front-end, but I later decided to integrate this backend with a Vue.js front-end found in this
 [repository](https://github.com/jleg13/MEVN_Application). Part of this project was to become familiar with testing and documenting our code. Here I have
 used Swagger to create the API-docs and used jest to test the code.
 
-## Built With
+## Built With:
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 
 
-# How to run the app
+## How to run the app:
 - Install [Docker](https://www.docker.com/products/docker-desktop) and [Docker Compose](https://docs.docker.com/compose/install/) on your machine.
 - In the terminal, run the command `docker-compose up -d` or `docker compose up -d` in the `dropbeartable` directory.
 - Server-side: visit [http://localhost:3000](http://localhost:3000).
@@ -22,7 +22,7 @@ used Swagger to create the API-docs and used jest to test the code.
 - Client-side: visit [http://localhost:8080](http://localhost:8080).
 
 
-# How to shut down the app
+## How to shut down the app:
 
 Important: the command will remove all unused volumes, including the named volume `dropbeartable_mongodb`, which contains all of your data. You should
 follow the steps to back up your data beforehand.
@@ -33,14 +33,14 @@ follow the steps to back up your data beforehand.
 	- Important: submit your assignments 2 and 3 with the exported data!
 - Run the command `docker-compose down -v` to stop the running containers and remove the volumes.
 
-# Mongo Data
+## Mongo Data:
 To test the server endpoints import the mongoDb data files exported from development stored in:
 
 - /server/mongo-data
 
 Visit [http://localhost:8081](http://localhost:8081) and import each file as a collection in the 'test' database.
 
-# Testing the API
+## Testing the API:
 Use the following curl commands to test the API endpoints:
 ## User Signup
 ```
@@ -53,7 +53,7 @@ curl --request POST \
 }
 '
 ```
-## User Login
+## User Login:
 ```
 curl --request POST \
   --url http://localhost:3000/api/user/login \
@@ -150,7 +150,7 @@ curl --request GET \
 ```
 
 
-# How to Open the Swagger API Docs
+## How to Open the Swagger API Docs
 ## Using the Swagger generated server
 
 ### Overview
